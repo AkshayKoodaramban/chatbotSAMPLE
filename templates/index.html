@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Enterprise Q&A Chatbot - Chat{% endblock %}
+{% block head %}{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="text-center mb-4">
+            <i class="fas fa-comments text-primary me-2"></i>
+            Ask me anything about your enterprise
+        </h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="session-sidebar">
+            <div class="session-controls">
+                <button class="btn btn-primary btn-sm w-100" id="newSessionBtn">
+                    <i class="fas fa-plus me-1"></i> New Chat
+                </button>
+                <button class="btn btn-danger btn-sm delete-selected-btn" id="deleteSelectedSessionsBtn" style="display:none;">
+                    <i class="fas fa-trash-alt me-1"></i> Delete Selected
+                </button>
+            </div>
+            <div id="sessionsList"></div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="chat-container">
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-input">
+                <textarea 
+                    class="form-control" 
+                    id="userInput" 
+                    rows="2" 
+                    placeholder="Type your question here..."
+                    aria-label="Chat input field"></textarea>
+                <button 
+                    class="btn btn-primary ms-2" 
+                    id="sendButton"
+                    type="button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Rename Session Modal -->
+<div class="modal fade" id="renameSessionModal" tabindex="-1" aria-labelledby="renameSessionModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form id="renameSessionForm">
+        <div class="modal-header">
+          <h5 class="modal-title" id="renameSessionModalLabel">Rename Chat Session</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="text" class="form-control" id="renameSessionInput" required maxlength="100">
+          <input type="hidden" id="renameSessionId">
+          <div id="renameSessionError" class="text-danger small mt-2"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Rename</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}{% endblock %}
